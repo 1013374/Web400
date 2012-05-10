@@ -1,0 +1,19 @@
+<script language="javascript">
+var tokens = new Array();
+	<?php $count = 0;
+	foreach ($this->tokens as $id => $token) : ?>
+	tokens[<?php echo $count; ?>] = new Array ("<?php echo $token['id'];?>", "<?php echo $token['hash']; ?>");
+	<?php $count++; 
+	endforeach; ?>
+</script>
+
+<table id="table1">
+	<tr>
+		<th colspan="2">Transfer Funds</th>
+	</tr>
+	<tr>
+		<td colspan="2"><?php echo $this->form; ?></td>
+	</tr>
+	
+</table>
+

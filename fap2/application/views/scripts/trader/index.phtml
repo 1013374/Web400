@@ -1,0 +1,64 @@
+
+
+<?php if (is_string($this->stocks)) { 
+	echo "The StockMapper did not pull any results from the table.";
+}
+else { ?>
+<div id="stocks">
+<table id="table1">
+	<th>Name</th>
+	<th>Abbreviation</th>
+	<th>Description</th>
+	<th>Price</th>
+	<th>Change</th>
+	<th>Options</th>
+<?php foreach ($this->stocks as $stock) : ?>
+	<tr>
+		<td><?php echo $stock->getName(); ?></td>
+		<td><?php echo $stock->getAbbv(); ?></td>
+		<td><?php echo $stock->getDesc(); ?></td>
+		<td><?php echo $stock->getPrice(); ?></td>
+		<td><?php echo $stock->getOldPrice(); ?></td>
+		<td><a href="<?php echo $this->url(array('controller' => 'trader', 'action' => 'buy', 'id' => $stock->getId())); ?>">Buy</a>
+			<a href="<?php echo $this->url(array('controller' => 'trader', 'action' => 'sell', 'id' => $stock->getId())); ?>">Sell</a>
+		</td>
+	</tr>
+<?php endforeach; ?>
+</table>
+<table id="table2">
+	<th>Name</th>
+	<th>Abbreviation</th>
+	<th>Price</th>
+	<th>Amount Owned</th>
+<?php foreach ($this->portfolios as $portfolio) : ?>
+	<?php if ($portfolio->getOwned() != 0) { ?>
+	<tr>
+		<td><?php echo $portfolio->getStock()->getName(); ?></td>
+		<td><?php echo $portfolio->getStock()->getAbbv(); ?></td>
+		<td><?php echo $portfolio->getStock()->getPrice(); ?></td>
+		<td><?php echo $portfolio->getOwned(); ?></td>
+	</tr>
+	<? } ?>
+<?php endforeach; ?>
+</table>
+<?php  } ?>
+<table id="table3">
+<tr>
+	<th colspan="2">Account</th>
+</tr>
+<tr>
+	<td>Balance:</td><td><?php echo $this->user->getBalance(); ?></td>
+</tr>
+<tr>
+	<td><a href="<?php echo $this->url(array('controller' => 'trader', 'action' => 'transfer')); ?>">Transfer</a></td>
+</tr>
+</table>
+</div>
+<?php if ($this->flag) { ?>
+<div id="flag">
+Congratulations!
+<p>Here's the flag: <?php echo $this->flag; ?></p>
+DO NOT close the window, or you will be SOL.
+</div>
+<? } ?>
+

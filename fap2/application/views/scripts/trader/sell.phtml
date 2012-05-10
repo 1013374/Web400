@@ -1,0 +1,16 @@
+<table id="table1">
+	<tr>
+		<th colspan="2">Sell<th>
+	</tr>
+	<tr>
+		<td>Stock Name:</td><td><?php echo $this->portfolio->getStock()->getName(); ?></td>
+	<tr>
+		<td>Price:</td><td><?php echo $this->portfolio->getStock()->getPrice(); ?></td>
+	</tr>
+		<td>Amount Owned:</td><td><?php echo $this->portfolio->getOwned(); ?></td>
+	</tr>
+	<tr>
+		<td>Balance:</td><td><?php echo $this->portfolio->getUser()->getBalance(); ?></td>
+	</tr>
+	<?php echo $this->form; ?>
+</table>

@@ -1,0 +1,133 @@
+<?php 
+$this->headMeta()->appendHttpEquiv('Content-Type', 'text/html;charset=utf-8');
+$this->headTitle()->setSeparator(' - ');
+$this->headTitle('FAP Ultra');
+echo $this->doctype(); 
+
+?>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+        <?php echo $this->headMeta(); ?>
+        <?php echo $this->headTitle(); ?>
+        <script src="<?php echo $this->baseUrl('jquery-1.5.1.min.js'); ?>"></script>
+	<script src="<?php echo $this->baseUrl('js/tokens.js');  ?>"></script>
+<script type="text/javascript">
+function load() 
+{
+  $('#table1').fadeIn('slow');
+  $('#table2').fadeIn('slow');
+  $('#table3').fadeIn('slow');
+}
+function logout()
+{
+	window.location="<?php echo $this->url(array('controller' => 'auth', 'action' => 'logout')); ?>";
+}
+<!--
+setTimeout("logout();",990000);
+// -->
+</script> 
+</head>
+<style type="text/css">
+table
+{
+	border: 1px solid  #B2DFEE;
+}
+
+th
+{
+	background-color: #E0E0E0;
+}
+td
+{
+	border-bottom: 1px solid gray;
+}
+
+body
+{
+	background-color : #ffffff;
+	color : #000000;
+	font: 12px/18px Arial, Tahoma, Verdana, sans-serif;
+	background-image: url('<?php echo $this->baseUrl("images/ranka-internet.jpg"); ?>');
+	background-repeat: no-repeat;
+}
+#header
+{
+	background-color: #B2DFEE;
+	height: 50px;
+	border-bottom: none;
+	padding: 3px;
+}
+
+#content
+{
+	border-top: none;
+}
+#table1
+{
+	float:left;
+	background-color: white;
+	display:none;
+}
+#table2
+{
+	float:left;
+	background-color: white;
+	display:none;
+}
+#table3
+{
+	float:left;
+	background-color: white;
+	display:none;
+}
+
+#message
+{
+	float:left;
+	background-color: #FFEFDB;
+	padding: 10px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+#login
+{
+	border: 2px solid  #B2DFEE;
+	width: 300px;
+	padding: 10px;
+}
+
+#flag
+{
+	float:left;
+	border 5px solid #b2dfee;
+	background-color: #71C671;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+
+a
+{
+	border: 1px solid gray;
+	background-color: white;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	padding: 2px;
+}
+A:link {text-decoration: none;color: blue}
+A:visited {text-decoration: none;color: blue}
+A:active {text-decoration: none;color: blue}
+A:hover {color:red;}
+</style>
+<body onLoad="load();">
+	<div id="header">
+	<strong>F</strong>inancial <strong>A</strong>pplication <strong>P</strong>latform Ultra<br/>
+	<a href="<?php echo $this->url(array('controller' => 'trader', 'action' => 'index')); ?>">home</a><a href="<?php echo $this->url(array('controller' => 'auth', 'action' => 'logout')); ?>" id="log">logout</a>
+	</div>
+        <div id="content">
+                <h1><?php echo $this->escape($this->title); ?></h1>
+                <?php echo $this->layout()->content; ?>
+		</div>
+</body>
+</html>

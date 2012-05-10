@@ -1,0 +1,24 @@
+<table id="table1">
+	<tr>
+		<th colspan="2"> Buy </th>
+	</tr>
+	<tr>
+		<td>Stock Name:</td><td> <?php echo $this->portfolio->getStock()->getName(); ?></td>
+	</tr>
+	<tr>
+		<td>Price:</td><td> <?php echo $this->portfolio->getStock()->getPrice(); ?></td>
+	</tr>
+	<tr>
+		<td>Amount Currently Owned:</td><td><?php echo $this->portfolio->getOwned(); ?></td>
+	</tr>
+	<?php echo $this->form; ?>
+	<tr>
+		<td colspan="2"><?php print_r($this->formdata); ?></td>
+	</tr>
+	<tr>
+		<td>New balance:</td><td><?php echo $this->portfolio->getUser()->getBalance(); ?></td>
+	</tr>
+	<tr>
+		<td>Stock Amount:</td><td><?php echo $this->portfolio->getOwned(); ?></td>
+	</tr>
+</table>

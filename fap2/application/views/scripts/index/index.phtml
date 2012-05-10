@@ -1,0 +1,16 @@
+<table id="table1">
+	<tr>
+		<td><img src="<?php echo $this->baseUrl('images/FAP_turbo.jpg'); ?>"></img></td>
+	</tr>
+</table>
+
+<script language="javascript">
+var p2 = document.getElementsByTagName('a')[1];
+var p3 = document.createElement('a');
+p3.setAttribute('href','<?php echo $this->url(array("controller" => "auth", "action" => "index")); ?>');
+p3.innerHTML = "login";
+p2.parentNode.removeChild(p2); 
+document.getElementById('header').appendChild(p3);
+</script>
+
+
